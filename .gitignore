@@ -1,0 +1,11 @@
+BookMyMovie/Assets.xcassets/.*
+Pods/Pods.xcodeproj/xcuserdata/*
+Pods/Pods.xcodeproj/xcuserdata/
+BookMyMovie.xcodeproj/xcuserdata/
+BookMyMovie.xcodeproj/project.xcworkspace/xcuserdata/*
+BookMyMovie.xcodeproj/project.xcworkspace/xcshareddata/
+BookMyMovie.xcworkspace/xcuserdata/*
+.DS_Store
+BookMyMovie/.DS_Store
+BookMyMovie/*/.DS_Store
+
