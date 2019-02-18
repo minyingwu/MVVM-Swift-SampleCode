@@ -44,14 +44,6 @@ class DetailPageViewController: UIViewController {
     }
     
     func setupViewModel() {
-        movieDetailViewModel.showAlertClosure = { [weak self] error in
-            
-        }
-        
-        movieDetailViewModel.updateLoadingClosure = { [weak self] state in
-            
-        }
-        
         movieDetailViewModel.reloadUIClosure = { [weak self] isEmpty in
             
             guard !isEmpty else {
@@ -61,15 +53,15 @@ class DetailPageViewController: UIViewController {
             let detailData = self?.movieDetailViewModel.dataList[0] as! MovieDetail
             DispatchQueue.main.async {
                 if let self = self {
-                    self.synopsisLabel.text = detailData.overview
+                    self.synopsisLabel.text = detailData.overview ?? "NONE"
                     let contentNeededSize = self.synopsisLabel.sizeThatFits(CGSize(width: UIScreen.main.bounds.width - 40, height: CGFloat.greatestFiniteMagnitude))
                     
                     self.scrollViewHeightConstraint.constant =
                         (contentNeededSize.height > (300 - 85)) ? (contentNeededSize.height + 100) : 300
                     
-                    self.languageLabel.text = "Language: " + (detailData.original_language ?? "NONE")
+                    self.languageLabel.text = "Language: " + (detailData.original_language ?? "N/A")
                     self.genresLabel.text = detailData.genres?.last?.name ?? ""
-                    self.durationLabel.text = (detailData.runtime != nil) ? "Duration: " + String(detailData.runtime!) + "min": "Duration: " + "NONE"
+                    self.durationLabel.text = (detailData.runtime != nil) ? "Duration: " + String(detailData.runtime!) + "min": "Duration: " + "N/A"
                 }
             }
         }
@@ -78,11 +70,11 @@ class DetailPageViewController: UIViewController {
     }
     
     @IBAction func bookingMovie() {
-        self.present(BookingPageViewController(), animated: true)
+        present(BookingPageViewController(), animated: true)
     }
     
     @IBAction func backToMain(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
 }

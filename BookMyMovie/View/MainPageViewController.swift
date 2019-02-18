@@ -33,11 +33,22 @@ class MainPageViewController: UIViewController {
     
     func setupViewModel() {
         movieListViewModel.showAlertClosure = { [weak self] error in
-            
+            DispatchQueue.main.async {
+                self?.presentErrorAlert(by: error)
+            }
         }
         
         movieListViewModel.updateLoadingClosure = { [weak self] state in
-            
+            DispatchQueue.main.async {
+                if let self = self {
+                    switch state {
+                    case .start:
+                        self.startLoading()
+                    case .stop:
+                        self.stopLoading()
+                    }
+                }
+            }
         }
         
         movieListViewModel.reloadUIClosure = { [weak self] isEmpty in
@@ -64,6 +75,7 @@ class MainPageViewController: UIViewController {
             destinationController.movieItem = self.movieListViewModel.dataList[index] as? MovieList.MovieItem
         }
     }
+    
 }
 
 extension MainPageViewController: UITableViewDelegate {
@@ -116,4 +128,3 @@ class MainTableCell: UITableViewCell {
     }
     
 }
-

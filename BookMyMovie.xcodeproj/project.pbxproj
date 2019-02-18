@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E1D3EB2221A76C5008A40E4 /* UIViewController_LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D3EB1221A76C5008A40E4 /* UIViewController_LoadingView.swift */; };
+		2E1D3EB4221AACB6008A40E4 /* UIViewController+AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D3EB3221AACB6008A40E4 /* UIViewController+AlertView.swift */; };
 		2E2AEEE422154B6E00B84DBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2AEEE322154B6E00B84DBE /* AppDelegate.swift */; };
 		2E2AEEE622154B6E00B84DBE /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2AEEE522154B6E00B84DBE /* MainPageViewController.swift */; };
 		2E2AEEE922154B6E00B84DBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2AEEE722154B6E00B84DBE /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 /* Begin PBXFileReference section */
 		00AFB27314F370FCF2F2A067 /* Pods_BookMyMovieTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookMyMovieTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2316472273F436B79076AA77 /* Pods-BookMyMovieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookMyMovieTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BookMyMovieTests/Pods-BookMyMovieTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2E1D3EB1221A76C5008A40E4 /* UIViewController_LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController_LoadingView.swift; sourceTree = "<group>"; };
+		2E1D3EB3221AACB6008A40E4 /* UIViewController+AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AlertView.swift"; sourceTree = "<group>"; };
 		2E2AEEE022154B6E00B84DBE /* BookMyMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookMyMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E2AEEE322154B6E00B84DBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E2AEEE522154B6E00B84DBE /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 			isa = PBXGroup;
 			children = (
 				2E2AEF1822157D1E00B84DBE /* UIImage+Effect.swift */,
+				2E1D3EB1221A76C5008A40E4 /* UIViewController_LoadingView.swift */,
+				2E1D3EB3221AACB6008A40E4 /* UIViewController+AlertView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -402,8 +408,10 @@
 				2E7C5C6A22193CCC003D134D /* APISession.swift in Sources */,
 				2E7C5C66221935E1003D134D /* IBInspectable+UIView.swift in Sources */,
 				2E2AEF0622154FC900B84DBE /* BaseViewModel.swift in Sources */,
+				2E1D3EB2221A76C5008A40E4 /* UIViewController_LoadingView.swift in Sources */,
 				2E2AEF0E2215666100B84DBE /* HttpClient.swift in Sources */,
 				2E2AEF0A221565B400B84DBE /* MovieListViewModel.swift in Sources */,
+				2E1D3EB4221AACB6008A40E4 /* UIViewController+AlertView.swift in Sources */,
 				2E2AEF142215713E00B84DBE /* MovieList.swift in Sources */,
 				2E2AEF11221569CE00B84DBE /* APIConfig.swift in Sources */,
 				2E7C5C6E221974D4003D134D /* BookingPageViewController.swift in Sources */,

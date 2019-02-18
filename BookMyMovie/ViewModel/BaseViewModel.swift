@@ -13,7 +13,7 @@ protocol BaseData {}
 class BaseViewModel {
     var dataList: [BaseData] = [BaseData]() {
         didSet {
-            self.reloadUIClosure?(numberOfData > 0 ? false : true)
+            reloadUIClosure?(numberOfData > 0 ? false : true)
         }
     }
     

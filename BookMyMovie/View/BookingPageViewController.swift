@@ -17,6 +17,10 @@ class BookingPageViewController: UIViewController {
     
     var dismissButton: UIButton!
     
+    lazy var indicatorView: UIView = {
+        return indicatorViewController.view
+    }()
+    
     override func loadView() {
         bookingWebView = WKWebView(frame: .zero, configuration: WKWebViewConfiguration())
         bookingWebView.navigationDelegate = self
@@ -33,12 +37,14 @@ class BookingPageViewController: UIViewController {
         dismissButton = UIButton(frame: CGRect(x: 5, y: 20, width: 50, height: 50))
         dismissButton.setImage(#imageLiteral(resourceName: "icon_close"), for: .normal)
         dismissButton.addTarget(self, action: #selector(backToDetail), for: .touchUpInside)
-        bookingWebView.addSubview(dismissButton)
+        view.addSubview(dismissButton)
         
         if let url = BOOKING_URL {
             let request = URLRequest(url: url)
             bookingWebView.load(request)
             bookingWebView.allowsBackForwardNavigationGestures = true
+            
+            view.addSubview(indicatorView)
         }
     }
     
@@ -48,5 +54,13 @@ class BookingPageViewController: UIViewController {
 }
 
 extension BookingPageViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        indicatorView.removeFromSuperview()
+    }
+
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        indicatorView.removeFromSuperview()
+    }
     
 }

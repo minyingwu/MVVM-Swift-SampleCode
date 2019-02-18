@@ -31,7 +31,7 @@ class MovieListViewModel: BaseViewModel {
             }
             
             if let posterURL = movieItem.poster_path {
-                let processor = BlurImageProcessor(blurRadius: 60)
+                let processor = BlurImageProcessor(blurRadius: 40) >> OverlayImageProcessor(overlay: .darkGray)
                 tableCell.posterImageView.kf.setImage(
                     with: URL(string: AppAPIAction.GET.fetchImage(posterURL).urlString),
                     options: [.processor(processor)])
@@ -53,8 +53,10 @@ class MovieListViewModel: BaseViewModel {
     }
     
     override func fetchDataListfromServer() {
+        loadingState = .start
         APISession.shared.getMovieListByRelease(onPage: 1) { (data, response, error) in
             guard error == nil else {
+                self.loadingState = .stop
                 switch URLError.Code(rawValue: (error! as NSError).code) {
                 case .notConnectedToInternet:
                     self.errorState = ErrorState.networkError
@@ -66,7 +68,9 @@ class MovieListViewModel: BaseViewModel {
             if let data = data,
                 let movieList = try? JSONDecoder().decode(MovieList.self, from: data) {
                 self.numberOfPages = movieList.total_pages
+                self.loadedPage = 1
                 self.dataList = movieList.results
+                self.loadingState = .stop
             }
         }
     }
