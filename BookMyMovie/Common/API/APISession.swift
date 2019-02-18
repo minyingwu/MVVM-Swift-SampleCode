@@ -18,6 +18,10 @@ class APISession {
         return HttpClient()
     }()
     
+    init(httpClient: HttpClient) {
+        self.httpClient = httpClient
+    }
+    
     func getMovieListByRelease(onPage num: Int,
                               completionHandler: @escaping ServerCompletionHandler) {
         if let url = URL(string: AppAPIAction.GET.discoverByRelease(num).urlString) {

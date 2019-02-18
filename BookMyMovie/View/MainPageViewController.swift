@@ -123,8 +123,4 @@ class MainTableCell: UITableViewCell {
     
     @IBOutlet weak var ratingLabel: UILabel!
     
-    func setupBackgroundBlurred() {
-        posterImageView = posterImageView.blurred
-    }
-    
 }

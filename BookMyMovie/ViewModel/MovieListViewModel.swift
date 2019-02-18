@@ -11,15 +11,6 @@ import Kingfisher
 
 class MovieListViewModel: BaseViewModel {
     
-    private lazy var httpClient: HttpClient = {
-        return HttpClient()
-    }()
-    
-    init(httpClient: HttpClient? = nil) {
-        super.init()
-        if httpClient != nil { self.httpClient = httpClient! }
-    }
-    
     override func getUpdatedDataCell(at indexPath: IndexPath, _ cell: UITableViewCell) -> UITableViewCell {
         if let tableCell = cell as? MainTableCell {
             tableCell.tag = indexPath.row
