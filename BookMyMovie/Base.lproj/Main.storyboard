@@ -13,7 +13,7 @@
         <!--Main Page View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainPageViewController" customModule="BookMyMovie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main_page_view_controller" id="BYZ-38-t0r" customClass="MainPageViewController" customModule="BookMyMovie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,7 +116,7 @@
         <!--Detail Page View Controller-->
         <scene sceneID="rNO-Xv-7cm">
             <objects>
-                <viewController id="NCQ-aK-ZNs" customClass="DetailPageViewController" customModule="BookMyMovie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detail_page_view_controller" id="NCQ-aK-ZNs" customClass="DetailPageViewController" customModule="BookMyMovie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kdD-Ah-lTt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -43,7 +43,7 @@ class MovieListViewModel: BaseViewModel {
         return UITableViewCell()
     }
     
-    override func fetchDataListfromServer() {
+    override func fetchDataListfromServer(completionHandler: CompletionHandler? = nil) {
         loadingState = .start
         APISession.shared.getMovieListByRelease(onPage: 1) { (data, response, error) in
             guard error == nil else {
@@ -54,6 +54,7 @@ class MovieListViewModel: BaseViewModel {
                 default:
                     self.errorState = ErrorState.requestURLError
                 }
+                completionHandler?()
                 return
             }
             if let data = data,
@@ -63,16 +64,18 @@ class MovieListViewModel: BaseViewModel {
                 self.dataList = movieList.results
                 self.loadingState = .stop
             }
+            completionHandler?()
         }
     }
     
-    override func fetchMoreData(with pageNum: Int) {
+    override func fetchMoreData(with pageNum: Int, completionHandler: CompletionHandler? = nil) {
         APISession.shared.getMovieListByRelease(onPage: pageNum) { (data, response, error) in
             if let data = data,
                 let movieList = try? JSONDecoder().decode(MovieList.self, from: data) {
                 self.loadedPage += 1
                 self.dataList.append(contentsOf: movieList.results)
             }
+            completionHandler?()
         }
     }
 

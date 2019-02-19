@@ -14,7 +14,7 @@ class MainPageViewController: UIViewController {
     
     let refreshControl = UIRefreshControl()
     
-    fileprivate lazy var movieListViewModel: BaseViewModel = {
+    lazy var movieListViewModel: BaseViewModel = {
         return MovieListViewModel()
     }()
     

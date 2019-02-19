@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias CompletionHandler = (()->(Void))
+
 protocol BaseData {}
 
 class BaseViewModel {
@@ -58,7 +60,7 @@ class BaseViewModel {
         return dataList[index]
     }
     
-    func fetchDataListfromServer() {
+    func fetchDataListfromServer(completionHandler: CompletionHandler? = nil) {
         fatalError("Must override this method to fetch different data list")
     }
     
@@ -66,7 +68,7 @@ class BaseViewModel {
         fatalError("Must override this method to handle custom cell")
     }
     
-    func fetchMoreData(with pageNum: Int) {}
+    func fetchMoreData(with pageNum: Int, completionHandler: CompletionHandler? = nil) {}
 }
 
 enum ErrorState: Error {

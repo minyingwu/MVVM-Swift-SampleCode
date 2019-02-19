@@ -18,7 +18,7 @@ class MovieDetailViewModel: BaseViewModel {
         self.movieId = id
     }
     
-    override func fetchDataListfromServer() {
+    override func fetchDataListfromServer(completionHandler: CompletionHandler? = nil) {
         APISession.shared.getDetailMovieInfo(by: movieId) { (data, response, error) in
             guard error == nil else {
                 switch URLError.Code(rawValue: (error! as NSError).code) {
@@ -27,12 +27,14 @@ class MovieDetailViewModel: BaseViewModel {
                 default:
                     self.errorState = ErrorState.requestURLError
                 }
+                completionHandler?()
                 return
             }
             if let data = data,
                 let movieDetail = try? JSONDecoder().decode(MovieDetail.self, from: data) {
                 self.dataList = [movieDetail]
             }
+            completionHandler?()
         }
     }
 }

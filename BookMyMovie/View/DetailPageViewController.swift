@@ -22,10 +22,10 @@ class DetailPageViewController: UIViewController {
     
     @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
     
-    var movieItem: MovieList.MovieItem!
+    var movieItem: MovieList.MovieItem?
     
-    fileprivate lazy var movieDetailViewModel: BaseViewModel = {
-        return MovieDetailViewModel(with: movieItem.id)
+    lazy var movieDetailViewModel: BaseViewModel = {
+        return MovieDetailViewModel(with: movieItem?.id ?? 0)
     }()
     
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ class DetailPageViewController: UIViewController {
     }
     
     func initView() {
-        if let posterURL = movieItem.poster_path {
+        if let posterURL = movieItem?.poster_path {
             posterImageView.kf.setImage(with: URL(string: AppAPIAction.GET.fetchImage(posterURL).urlString))
         }else {
             posterImageView.contentMode = .scaleAspectFill
