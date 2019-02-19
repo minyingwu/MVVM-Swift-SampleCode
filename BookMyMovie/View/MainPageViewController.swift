@@ -14,6 +14,8 @@ class MainPageViewController: UIViewController {
     
     let refreshControl = UIRefreshControl()
     
+    let interactor = Interactor()
+    
     lazy var movieListViewModel: BaseViewModel = {
         return MovieListViewModel()
     }()
@@ -72,6 +74,8 @@ class MainPageViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationController = segue.destination as? DetailPageViewController {
             let index = (sender as! UITableViewCell).tag
+            destinationController.transitioningDelegate = self
+            destinationController.interactor = interactor
             destinationController.movieItem = self.movieListViewModel.dataList[index] as? MovieList.MovieItem
         }
     }
@@ -87,8 +91,7 @@ extension MainPageViewController: UITableViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-        
-        if (maximumOffset - currentOffset) <= (UIScreen.main.bounds.height / 3) {
+        if (maximumOffset - currentOffset) <= (UIScreen.main.bounds.height + 100) {
             if !movieListViewModel.noMore {
                 movieListViewModel.fetchMoreData(with: movieListViewModel.loadedPage + 1)
             }
@@ -111,6 +114,15 @@ extension MainPageViewController: UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
+}
+
+extension MainPageViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DismissAnimation()
+    }
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactor.hasStarted ? interactor : nil
+    }
 }
 
 class MainTableCell: UITableViewCell {

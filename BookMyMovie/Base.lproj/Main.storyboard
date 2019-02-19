@@ -219,6 +219,7 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="hu2-0i-oIR" firstAttribute="leading" secondItem="yx3-gy-G1z" secondAttribute="leading" id="9Pr-oX-yjy"/>
                             <constraint firstItem="yx3-gy-G1z" firstAttribute="bottom" secondItem="hu2-0i-oIR" secondAttribute="bottom" constant="300" id="Ayp-z9-v63"/>
@@ -232,6 +233,9 @@
                             <constraint firstItem="h8i-4a-LfC" firstAttribute="top" secondItem="hu2-0i-oIR" secondAttribute="bottom" id="gYu-q1-X76"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yx3-gy-G1z"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="MPU-RV-B71" appends="YES" id="lvZ-bv-BDV"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="durationLabel" destination="h2c-bo-7pi" id="Izg-Wh-vKQ"/>
@@ -243,6 +247,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cqN-TW-SiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="MPU-RV-B71">
+                    <connections>
+                        <action selector="handleGestureWithSender:" destination="NCQ-aK-ZNs" id="TDh-Mp-I3N"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1200.8" y="104.7976011994003"/>
         </scene>
